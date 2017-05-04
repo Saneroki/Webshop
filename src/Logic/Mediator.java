@@ -10,8 +10,7 @@ package Logic;
  */
 
 
-public interface Mediator {
-    public abstract void connectToDB(String user, String pw, String db);
+public  interface Mediator {
     public abstract void sendData(String string);
     public abstract void getData();
     

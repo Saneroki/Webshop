@@ -16,13 +16,14 @@ public class DBMediator implements Mediator{
     ConnectionToDB con;
     String status;
     ResultSet result;
-    
+    String user = "postgres";
+    String pw = "Npaexmmf226";
+    String url = "jdbc:postgresql://10.126.115.233:5432/ElectroMOSDB";
     public DBMediator(){
         
     }
 
-    @Override
-    public void connectToDB(String user, String pw, String url) {
+    public void connectToDB() {
         con = new ConnectionToDB(user, pw, url);
         status = con.connect();
         System.out.println(status);
@@ -44,5 +45,17 @@ public class DBMediator implements Mediator{
     
     public ResultSet getResult(){
         return result;
+    }
+    
+    public void setUser(String user){
+        this.user = user;
+    }
+    
+    public void setPW(String pw){
+        this.pw = pw;
+    }
+    
+    public void setURL(String url){
+        this.url = url;
     }
 }

@@ -5,9 +5,13 @@
  */
 package GUI;
 
+import Logic.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -15,13 +19,26 @@ import javafx.fxml.Initializable;
  * @author Marcg
  */
 public class MainPageController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
+    
+    Controller controller;
+    
+    @FXML
+    private AnchorPane pageTop;
+    @FXML
+    private AnchorPane pageLeft;
+    @FXML
+    private AnchorPane pageFoot;
+    @FXML
+    private AnchorPane pageCenter;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        controller = new Controller();
+    }
+
+
+    private void placeWidget(AnchorPane pane, Node node) {
+        
+    }
     
 }

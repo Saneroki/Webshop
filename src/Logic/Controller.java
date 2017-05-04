@@ -9,14 +9,12 @@ package Logic;
  *
  * @author Marcg
  */
-public class CMSmediator implements Mediator{
+public class Controller implements Mediator{
     Logic logic;
-    public CMSmediator(){
+    public Controller(){
         logic = new Logic();
         
     }
-
-    
 
     @Override
     public void sendData(String string) {
@@ -27,11 +25,11 @@ public class CMSmediator implements Mediator{
     public void getData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public void connectToDB(String user, String pw, String url) {
-        logic.connectDB(user, pw, url);
+    
+    public void getPosition() {
+        //not yet implemented
     }
+
 
     
 }

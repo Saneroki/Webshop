@@ -8,6 +8,7 @@ package Logic;
 import DB.DBMediator;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  *
@@ -24,22 +25,35 @@ class Logic {
     }
     
     void loadPage(int i){
-        dB.sendData("SELECT * FROM \"site\" WHERE \"site\".site_id = " + i);
-        result = dB.getResult();
+        HashMap<Widgets, String> widgets = new HashMap<>();
+        String sql = "SELECT \"site\".site_id, \"site\".\"Description\", \"site_widget\".x, \"site_widget\".y, " +
+            "\"widget\".id, \"widget\".widget_name, \"widget_type\".type_name FROM \"site\"\n" +
+            "JOIN \"site_widget\" ON (\"site_widget\".site_id = \"site\".site_id)\n" +
+            "JOIN \"widget\" ON (\"site_widget\".widget_id = \"widget\".id)\n" +
+            "JOIN \"widget_type\" ON (\"widget\".type_id = \"widget_type\".id)" +
+            "WHERE \"site\".site_id = " + i;
         
+            dB.sendData(sql);
+            result = dB.getResult();
+            String siteName = "";
+            int id = 0;
         
         try{
-           currentPage = new Page(createWidget(result.getInt(2), "top"), 
-                createWidget(result.getInt(4), "left"), 
-                createWidget(result.getInt(5), "center"), 
-                createWidget(result.getInt(6), "bottom"));
+            siteName = result.getString(2);
+            id = result.getInt(1);
+            while(result.next()){
+                widgets.put(createWidget(result.getInt(5), result.getInt(3), result.getInt(4), result.getString(6)), result.getString(7));
+            }
+            
         } catch(SQLException e){
             System.out.println("no data found!");
         }
         
+        currentPage = new Page(id, siteName, widgets);
     }
     
-    Widgets createWidget(int id, String desc){
+    
+    Widgets createWidget(int id, int x, int y, String desc){
         Widgets widget = null;
         String tabel;
         switch(desc){
@@ -58,20 +72,31 @@ class Logic {
             default:
                 tabel = "";
         }
-        
-        String sql = "SELECT * FROM \"" + tabel + "\" JOIN \"widget\" ON (\"widget\".id = \"" + tabel + "\".widget_id) WHERE \"" + tabel + "\".id = " + id;
-        
-        dB.sendData(sql);
-        ResultSet widgetresult = dB.getResult();
-        try{
-            widget = new Widgets(widgetresult.getInt(2), widgetresult.getInt(3), widgetresult.getString(6));
-        } catch(SQLException e){
-            System.out.println("no data found!");
-        }
-        
+       
+        widget = new Widgets(x, y, desc);
         return widget;
     }
     
+    
+    double getWidgetX(String widgetName){
+        double x = 0;
+        for(Widgets w: currentPage.getAllWidgets().keySet()){
+            if(w.getDesc().equals(widgetName)){
+                x = w.getX();
+            }
+        }
+        return x;
+    }
+    
+    double getWidgetY(String widgetName){
+        double y = 0;
+        for(Widgets w: currentPage.getAllWidgets().keySet()){
+            if(w.getDesc().equals(widgetName)){
+                y = w.getY();
+            }
+        }
+        return y;
+    }
     
     
     

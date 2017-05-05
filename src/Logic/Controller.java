@@ -26,8 +26,12 @@ public class Controller implements Mediator{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void getPosition() {
-        //not yet implemented
+    public void getWidgetX(String widgetName) {
+        
+    }
+    
+    public void getWidgetY(String widgetName) {
+        
     }
 
 

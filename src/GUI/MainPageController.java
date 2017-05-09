@@ -25,7 +25,6 @@ import javafx.scene.layout.AnchorPane;
 public class MainPageController implements Initializable {
     
     Controller controller;
-    HashMap<Integer, Node> widgets;
     WidgetSelector ws;
     
     @FXML
@@ -39,17 +38,10 @@ public class MainPageController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        widgets = new HashMap<>();
-        ArrayList<Widget> widgetList = new ArrayList();
-        ws = new WidgetSelector();
-        int i = 1;
+        ws = new WidgetSelector(controller);
         controller = new Controller();
-        widgetList = ws.getWidgets();
-        for(Widget w: widgetList){
-            widgets.put(i, w.getNode());
-            i++;
-        }
-        loadPage(1);
+        
+        loadPage(3);
     }
     
     
@@ -58,32 +50,33 @@ public class MainPageController implements Initializable {
         ArrayList<Integer> widgetID = controller.getWidgets();
         
         for(Integer i: widgetID){
-            this.addWidget(widgets.get(controller.getNoteID(i)), i);
+            this.addWidget(ws.loadWidget(controller.getNoteID(i)).getNode(), i);
         }
         
     }
     
     private void addWidget(Node node, int id){
-        AnchorPane parent = getArea(id);
+        AnchorPane parent = pageCenter;
         parent.getChildren().add(node);
         node.setLayoutX(controller.getWidgetX(id));
         node.setLayoutY(controller.getWidgetY(id));
         node.resize(controller.getWigdetHeight(id), controller.getWidgetWidth(id));
     }
     
-    private AnchorPane getArea(int id){
-        switch(controller.getArea(id)){
-            case"top":
-                return pageTop;
-            case"left":
-                return pageLeft;
-            case"bottom":
-                return pageFoot;
-            case"center":
-                return pageCenter;
-            default:
-                break;
-        }
-        return null;
-    }
+    
+//    private AnchorPane getArea(int id){
+//        switch(controller.getArea(id)){
+//            case"top":
+//                return pageTop;
+//            case"left":
+//                return pageLeft;
+//            case"bottom":
+//                return pageFoot;
+//            case"center":
+//                return pageCenter;
+//            default:
+//                break;
+//        }
+//        return null;
+//    }
 }

@@ -18,7 +18,7 @@ class BusinessWidget {
     int height;
     int DBid;
     
-    BusinessWidget(int x, int y, int id, int width, int height, int dbid){
+    BusinessWidget(int x, int y, int height, int width, int id, int dbid){
         this.x = x;
         this.y = y;
         this.id = id;

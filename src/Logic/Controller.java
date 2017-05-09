@@ -6,6 +6,7 @@
 package Logic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -13,9 +14,18 @@ import java.util.ArrayList;
  */
 public class Controller implements Mediator{
     Logic logic;
+    private static Controller controller;
+    
     public Controller(){
         logic = new Logic();
         
+    }
+    
+    public static Controller getController() {
+        if (controller == null) {
+            controller = new Controller();
+        }
+        return controller;
     }
 
     @Override
@@ -52,12 +62,20 @@ public class Controller implements Mediator{
         return logic.getWidgetID();
     }
     
-    public String getArea(int id){
-        return logic.getArea(id);
-    }
+//    public String getArea(int id){
+//        return logic.getArea(id);
+//    }
     
     public int getNoteID(int widgetID){
         return logic.getNodeID(widgetID);
+    }
+    
+    public HashMap<Integer, String> getStaticWidget(){
+        return logic.getStaticWidget();
+    }
+    
+    public String getTest(){
+        return "Hello";
     }
 
 

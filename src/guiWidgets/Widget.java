@@ -103,9 +103,10 @@ public class Widget {
     private double xPos, yPos, width, height;
     private int ID, DBID;
     
-    public Widget(Node node, String name) {
+    public Widget(Node node, String name, int id) {
         this.fxmlName = name;
         this.node = node;
+        this.DBID = id;
     }
 
     /**

@@ -59,11 +59,9 @@ public class ConnectionToDB {
 
     public void sendDBStatement(String statement){
         PreparedStatement prepStat = null;
-        System.out.println("ok");
         try {
             prepStat = con.prepareStatement(statement);
             result = prepStat.executeQuery();
-            System.out.println("ok");
             
         } catch (SQLException e) {
             System.out.println(e);

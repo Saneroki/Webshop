@@ -13,21 +13,21 @@ import java.util.HashMap;
  * @author Marcg
  */
 class Page {
-    HashMap<Widgets, String> widgets;
-    ArrayList<Widgets> specificWidgets;
+    HashMap<BusinessWidget, String> widgets;
+    ArrayList<BusinessWidget> specificWidgets;
     String desc;
     int id;
     
-    Page(int id, String desc, HashMap<Widgets, String> widgets){
+    Page(int id, String desc, HashMap<BusinessWidget, String> widgets){
         this.widgets = widgets;
         this.desc = desc;
         this.id = id;
     }
     
     
-    ArrayList<Widgets> getTopWidgets(){
+    ArrayList<BusinessWidget> getTopWidgets(){
         specificWidgets.clear();
-        for(Widgets s: widgets.keySet()){
+        for(BusinessWidget s: widgets.keySet()){
             if(widgets.get(s).equals("top")){
                 specificWidgets.add(s);
             }
@@ -35,9 +35,9 @@ class Page {
         return specificWidgets;
     }
     
-    ArrayList<Widgets> getBottomWidgets(){
+    ArrayList<BusinessWidget> getBottomWidgets(){
         specificWidgets.clear();
-        for(Widgets s: widgets.keySet()){
+        for(BusinessWidget s: widgets.keySet()){
             if(widgets.get(s).equals("bottom")){
                 specificWidgets.add(s);
             }
@@ -45,9 +45,9 @@ class Page {
         return specificWidgets;
     }
     
-    ArrayList<Widgets> getLeftWidgets(){
+    ArrayList<BusinessWidget> getLeftWidgets(){
         specificWidgets.clear();
-        for(Widgets s: widgets.keySet()){
+        for(BusinessWidget s: widgets.keySet()){
             if(widgets.get(s).equals("left")){
                 specificWidgets.add(s);
             }
@@ -55,9 +55,9 @@ class Page {
         return specificWidgets;
     }
     
-    ArrayList<Widgets> getCenterWidgets(){
+    ArrayList<BusinessWidget> getCenterWidgets(){
         specificWidgets.clear();
-        for(Widgets s: widgets.keySet()){
+        for(BusinessWidget s: widgets.keySet()){
             if(widgets.get(s).equals("center")){
                 specificWidgets.add(s);
             }
@@ -65,7 +65,15 @@ class Page {
         return specificWidgets;
     }
     
-    HashMap<Widgets, String> getAllWidgets(){
+    HashMap<BusinessWidget, String> getAllWidgets(){
         return widgets;
+    }
+    
+    ArrayList<Integer> getWidgetID(){
+        ArrayList<Integer> id = new ArrayList<>();
+        for(BusinessWidget w: widgets.keySet()){
+            id.add(w.getID());
+        }
+        return id;
     }
 }   

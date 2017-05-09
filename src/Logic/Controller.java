@@ -5,6 +5,8 @@
  */
 package Logic;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Marcg
@@ -26,12 +28,36 @@ public class Controller implements Mediator{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void getWidgetX(String widgetName) {
-        
+    public void loadPage(int siteID){
+        logic.loadPage(siteID);
     }
     
-    public void getWidgetY(String widgetName) {
-        
+    public double getWidgetX(int widgetID) {
+        return logic.getWidgetX(widgetID);
+    }
+    
+    public double getWidgetY(int widgetID) {
+        return logic.getWidgetY(widgetID);
+    }
+    
+    public double getWigdetHeight(int widgetID) {
+        return (double)logic.getWidgetHeight(widgetID);
+    }
+    
+    public double getWidgetWidth(int widgetID){
+        return (double)logic.getWidgetWidth(widgetID);
+    }
+    
+    public ArrayList<Integer> getWidgets(){
+        return logic.getWidgetID();
+    }
+    
+    public String getArea(int id){
+        return logic.getArea(id);
+    }
+    
+    public int getNoteID(int widgetID){
+        return logic.getNodeID(widgetID);
     }
 
 

@@ -7,6 +7,9 @@ package DB;
 
 import Logic.Mediator;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,7 +34,9 @@ public class DBMediator implements Mediator{
 
     @Override
     public void sendData(String string) {
-        result = con.sendDBStatement(string);
+        System.out.println(string);
+        con.sendDBStatement(string);
+        result = con.getResult();
     }
 
     @Override

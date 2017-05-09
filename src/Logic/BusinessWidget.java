@@ -10,15 +10,21 @@ package Logic;
  *
  * @author Marcg
  */
-class Widgets {
-    String desc;
+class BusinessWidget {
+    int id;
     int x;
     int y;
+    int width;
+    int height;
+    int DBid;
     
-    Widgets(int x, int y, String desc){
+    BusinessWidget(int x, int y, int id, int width, int height, int dbid){
         this.x = x;
         this.y = y;
-        this.desc = desc;
+        this.id = id;
+        this.height = height;
+        this.width = width;
+        this.DBid = dbid;
                
     }
     
@@ -38,12 +44,20 @@ class Widgets {
         return y;
     }
     
-    void setDesc(String desc){
-        this.desc = desc;
+    int getHeight(){
+        return height;
     }
     
-    String getDesc(){
-        return desc;
+    int getWidth(){
+        return width;
+    }
+    
+    int getID(){
+        return id;
+    }
+    
+    int getDBID(){
+        return DBid;
     }
     
     

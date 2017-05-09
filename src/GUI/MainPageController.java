@@ -6,7 +6,11 @@
 package GUI;
 
 import Logic.Controller;
+import guiWidgets.*;
+import java.awt.geom.Area;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +25,8 @@ import javafx.scene.layout.AnchorPane;
 public class MainPageController implements Initializable {
     
     Controller controller;
+    HashMap<Integer, Node> widgets;
+    WidgetSelector ws;
     
     @FXML
     private AnchorPane pageTop;
@@ -33,12 +39,51 @@ public class MainPageController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        widgets = new HashMap<>();
+        ArrayList<Widget> widgetList = new ArrayList();
+        ws = new WidgetSelector();
+        int i = 1;
         controller = new Controller();
+        widgetList = ws.getWidgets();
+        for(Widget w: widgetList){
+            widgets.put(i, w.getNode());
+            i++;
+        }
+        loadPage(1);
     }
-
-
-    private void placeWidget(AnchorPane pane, Node node) {
+    
+    
+    private void loadPage(int id){
+        controller.loadPage(id);
+        ArrayList<Integer> widgetID = controller.getWidgets();
+        
+        for(Integer i: widgetID){
+            this.addWidget(widgets.get(controller.getNoteID(i)), i);
+        }
         
     }
     
+    private void addWidget(Node node, int id){
+        AnchorPane parent = getArea(id);
+        parent.getChildren().add(node);
+        node.setLayoutX(controller.getWidgetX(id));
+        node.setLayoutY(controller.getWidgetY(id));
+        node.resize(controller.getWigdetHeight(id), controller.getWidgetWidth(id));
+    }
+    
+    private AnchorPane getArea(int id){
+        switch(controller.getArea(id)){
+            case"top":
+                return pageTop;
+            case"left":
+                return pageLeft;
+            case"bottom":
+                return pageFoot;
+            case"center":
+                return pageCenter;
+            default:
+                break;
+        }
+        return null;
+    }
 }

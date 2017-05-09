@@ -57,14 +57,21 @@ public class ConnectionToDB {
     }
 
 
-    protected ResultSet sendDBStatement(String statement){
+    public void sendDBStatement(String statement){
         PreparedStatement prepStat = null;
+        System.out.println("ok");
         try {
             prepStat = con.prepareStatement(statement);
             result = prepStat.executeQuery();
+            System.out.println("ok");
+            
         } catch (SQLException e) {
+            System.out.println(e);
         }
 
+    }
+    
+    protected ResultSet getResult(){
         return result;
     }
 }

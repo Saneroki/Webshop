@@ -11,19 +11,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
  *
  * @author Kristian
  */
-public class Searchbar implements Initializable {
+public class ProductContainer implements Initializable {
 
     @FXML
-    private TextField searchText;
+    private ImageView ImgviewProduct;
     @FXML
-    private Button searchButton;
+    private Label LblProductTitle;
+    @FXML
+    private Label LblSerialNumber;
+    @FXML
+    private Button btAddToCart;
+    @FXML
+    private Label LblPrice;
 
     /**
      * Initializes the controller class.
@@ -34,7 +41,11 @@ public class Searchbar implements Initializable {
     }    
 
     @FXML
-    private void searchAction(ActionEvent event) {
+    private void handleAddToCartButtonAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleProductButtonAction(ActionEvent event) {
     }
     
 }

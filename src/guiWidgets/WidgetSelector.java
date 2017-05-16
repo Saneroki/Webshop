@@ -1,11 +1,14 @@
+package guiWidgets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package guiWidgets;
 
-import Logic.Controller;
+
+import business.Controller;
+import guiWidgets.Widget;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,10 +28,12 @@ public class WidgetSelector {
     private File directory;
     private Controller controller;
 
-    public WidgetSelector(Controller control) {
+    public WidgetSelector() {
         this.widgets = new ArrayList();
-        controller = control.getController();
-        System.out.println(controller.getTest());
+        controller = Controller.getController();
+        directory = new File(System.getProperty("user.dir") + "/src/guiWidgets");
+        getFilteredFiles("fxml");
+        System.out.println(directory.getAbsolutePath());
         try {
             this.updateWidgets();
         } catch (IOException ex) {
@@ -36,23 +41,23 @@ public class WidgetSelector {
             Logger.getLogger(WidgetSelector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    
     private void updateWidgets() throws IOException {
         directory = new File(System.getProperty("user.dir") + "/src/guiWidgets");
         loadAll();
     }
 
-//    private ArrayList<String> getFilteredFiles(String fileExtensionWanted) {
-//        ArrayList<String> returnStrings = new ArrayList();
-//        
-//        for (File file : directory.listFiles()) {   
-//            String extension = file.toString().split("\\.")[1];
-//            if(extension.equals(fileExtensionWanted)) {
-//                returnStrings.add(file.getName());
-//            }
-//        }
-//        return returnStrings;
-//    }
+    private void getFilteredFiles(String fileExtensionWanted) {
+        System.out.println(directory);
+        for (File file : directory.listFiles()) {   
+            String extension = file.toString().split("\\.")[1];
+            System.out.println(extension);
+            System.out.println(file.getName());
+            
+        }
+        
+    }
     private void loadAll() throws IOException {
         HashMap<Integer, String> staticWidget = new HashMap<>();
         staticWidget = controller.getStaticWidget();
@@ -82,10 +87,10 @@ public class WidgetSelector {
     }
 
     public Widget getWidget(String fileName, int id) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
         
-        Node root = FXMLLoader.load(getClass().getResource(fileName));
-
+        System.out.println(fileName);
+        System.out.println(getClass().getClassLoader().getResource(fileName).getPath()+"   <-------- Here!");
+        Node root = FXMLLoader.load(getClass().getClassLoader().getResource(fileName));
         return new Widget(root, fileName, id);
     }
     
@@ -96,6 +101,7 @@ public class WidgetSelector {
                    return getWidget(w.getFxmlName(), id);
                 } catch (IOException ex) {
                     Logger.getLogger(WidgetSelector.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex);
                 }
                 
             }

@@ -14,12 +14,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" prefHeight="720.0" prefWidth="1150.0" fx:controller="guiMain.MainPageController">
+<AnchorPane id="AnchorPane" prefHeight="770.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiMain.MainPageController">
    <children>
-      <ScrollPane minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <content>
-            <AnchorPane fx:id="pageCenter" prefHeight="720.0" prefWidth="1077.0" />
-         </content>
-      </ScrollPane>
+      <AnchorPane layoutY="46.0" prefHeight="720.0" prefWidth="1150.0">
+         <children>
+            <ScrollPane minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <AnchorPane fx:id="pageCenter" prefHeight="720.0" prefWidth="1077.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <Button fx:id="backButton" mnemonicParsing="false" onAction="#buttonListener" text="&lt;-Back" />
    </children>
 </AnchorPane>

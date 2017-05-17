@@ -8,7 +8,6 @@ package guiWidgets;
 
 
 import business.Controller;
-import guiWidgets.Widget;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,13 +26,11 @@ public class WidgetSelector {
     private ArrayList<Widget> widgets;
     private File directory;
     private Controller controller;
+    private static WidgetSelector ws;
 
     public WidgetSelector() {
         this.widgets = new ArrayList();
         controller = Controller.getController();
-        directory = new File(System.getProperty("user.dir") + "/src/guiWidgets");
-        getFilteredFiles("fxml");
-        System.out.println(directory.getAbsolutePath());
         try {
             this.updateWidgets();
         } catch (IOException ex) {
@@ -42,22 +39,19 @@ public class WidgetSelector {
         }
     }
     
+    public static WidgetSelector getWidgetSelector(){
+        if (ws == null) {
+            ws = new WidgetSelector();
+        }
+        return ws;
+    }
     
     private void updateWidgets() throws IOException {
         directory = new File(System.getProperty("user.dir") + "/src/guiWidgets");
         loadAll();
     }
 
-    private void getFilteredFiles(String fileExtensionWanted) {
-        System.out.println(directory);
-        for (File file : directory.listFiles()) {   
-            String extension = file.toString().split("\\.")[1];
-            System.out.println(extension);
-            System.out.println(file.getName());
-            
-        }
-        
-    }
+
     private void loadAll() throws IOException {
         HashMap<Integer, String> staticWidget = new HashMap<>();
         staticWidget = controller.getStaticWidget();
@@ -66,14 +60,7 @@ public class WidgetSelector {
         }
     }
 
-//    private void loadWidget(String fileName, int id) throws IOException {
-//        FXMLLoader loader = new FXMLLoader();
-//
-//        Node root = loader.load(getClass().getResource(fileName));
-//        System.out.println("Class name: " + root.getClass().getSimpleName());
-//
-//        this.getWidgets().add(new Widget(root, fileName, id));
-//    }
+
 
     /**
      * @return the widgets
@@ -87,10 +74,7 @@ public class WidgetSelector {
     }
 
     public Widget getWidget(String fileName, int id) throws IOException {
-        
-        System.out.println(fileName);
-        System.out.println(getClass().getClassLoader().getResource(fileName).getPath()+"   <-------- Here!");
-        Node root = FXMLLoader.load(getClass().getClassLoader().getResource(fileName));
+        Node root = FXMLLoader.load(getClass().getResource(fileName));
         return new Widget(root, fileName, id);
     }
     

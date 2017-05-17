@@ -10,9 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -133,7 +130,6 @@ class Logic {
         try {
             while(staticWidget.next()){
                 widgets.put(staticWidget.getInt(1), staticWidget.getString(2));
-                System.out.println(staticWidget.getInt(1) + ": " + staticWidget.getString(2));
             }
         } catch (SQLException ex) {
             System.out.println(ex);

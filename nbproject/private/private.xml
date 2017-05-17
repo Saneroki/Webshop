@@ -2,6 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiMain/ElectroMOSwebshop.java</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/ProductContainer.fxml</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiMain/PageSelectorController.java</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiMain/MainPage.fxml</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/Widget.java</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/Searchbar.fxml</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/Campaign.fxml</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiMain/MainPageController.java</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/Product.java</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/ProductContainer.java</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/WidgetSelector.java</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiMain/PageSelector.fxml</file>
+            <file>file:/C:/Users/Marcg/OneDrive/Dokumenter/GitHub/Webshop/src/guiWidgets/Browser.fxml</file>
+        </group>
     </open-files>
 </project-private>

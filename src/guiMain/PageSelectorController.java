@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +30,7 @@ import javafx.stage.Stage;
  */
 public class PageSelectorController implements Initializable {
     Controller control;
+    int pageChoice;
     /**
      * Initializes the controller class.
      */
@@ -44,7 +43,7 @@ public class PageSelectorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         control = Controller.getController();
-        //updateBox(pageSelect, control.getPageList());
+        updateBox(pageSelect, control.getPageList());
     }    
     
     
@@ -61,10 +60,15 @@ public class PageSelectorController implements Initializable {
     
     private void switchScene(ActionEvent event) {
         try {
-            Parent pageParent = FXMLLoader.load(getClass().getResource("MainPage.fxml"));
+            FXMLLoader  loader = new FXMLLoader(getClass().getResource("MainPage.fxml"));
+            Parent pageParent = loader.load();
             Scene newPageScene = new Scene(pageParent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(newPageScene);
+            MainPageController controller = loader.<MainPageController>getController();
+            System.out.println("Loading page: " + pageSelect.getValue());
+            System.out.println("ID: " + control.getPageID(pageSelect.getValue()));
+            controller.loadPage(control.getPageID(pageSelect.getValue()));
             stage.show();
         } catch (IOException ex) {
             System.out.println("cannot find page");
@@ -79,5 +83,9 @@ public class PageSelectorController implements Initializable {
         alert.setContentText("Database is not available at the moment");
         alert.showAndWait();
     }
+    
+    
+    
+    
     
 }

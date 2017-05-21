@@ -39,7 +39,6 @@ public class DBLogic implements Colleague{
 
     
     public void sendData(String string) {
-        System.out.println(string);
         con.sendDBStatement(string);
         result = con.getResult();
     }
@@ -114,7 +113,6 @@ public class DBLogic implements Colleague{
         try{
             while(result.next()){
                 
-                System.out.println("ID: ______" + result.getInt(2));
                 createWidget(result.getInt(6), result.getInt(7), result.getInt(2), result.getInt(3));
             }
         } catch(SQLException e){

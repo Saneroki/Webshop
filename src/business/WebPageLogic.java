@@ -47,7 +47,6 @@ public class WebPageLogic implements Colleague{
     @Override
     public void createWidget(int id, int DBid, int x, int y){
         BusinessWidget widget = new BusinessWidget(x, y, id, DBid);
-        System.out.println("HELLLLLLOOOOO");
         currentPage.addWidget(widget);
         return;
     }

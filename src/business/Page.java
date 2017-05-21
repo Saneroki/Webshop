@@ -13,57 +13,17 @@ import java.util.HashMap;
  * @author Marcg
  */
 class Page {
-    ArrayList<BusinessWidget> widgets;
+    ArrayList<BusinessWidget> widgets = new ArrayList<>();
     ArrayList<BusinessWidget> specificWidgets;
     String desc;
     int id;
     
-    Page(int id, String desc, ArrayList<BusinessWidget> widgets){
-        this.widgets = widgets;
+    Page(int id, String desc){
         this.desc = desc;
         this.id = id;
     }
     
     
-//    ArrayList<BusinessWidget> getTopWidgets(){
-//        specificWidgets.clear();
-//        for(BusinessWidget s: widgets){
-//            if(widgets.get(s).equals("top")){
-//                specificWidgets.add(s);
-//            }
-//        }
-//        return specificWidgets;
-//    }
-//    
-//    ArrayList<BusinessWidget> getBottomWidgets(){
-//        specificWidgets.clear();
-//        for(BusinessWidget s: widgets.keySet()){
-//            if(widgets.get(s).equals("bottom")){
-//                specificWidgets.add(s);
-//            }
-//        }
-//        return specificWidgets;
-//    }
-//    
-//    ArrayList<BusinessWidget> getLeftWidgets(){
-//        specificWidgets.clear();
-//        for(BusinessWidget s: widgets.keySet()){
-//            if(widgets.get(s).equals("left")){
-//                specificWidgets.add(s);
-//            }
-//        }
-//        return specificWidgets;
-//    }
-//    
-//    ArrayList<BusinessWidget> getCenterWidgets(){
-//        specificWidgets.clear();
-//        for(BusinessWidget s: widgets.keySet()){
-//            if(widgets.get(s).equals("center")){
-//                specificWidgets.add(s);
-//            }
-//        }
-//        return specificWidgets;
-//    }
     
     ArrayList<BusinessWidget> getAllWidgets(){
         return widgets;
@@ -75,5 +35,9 @@ class Page {
             id.add(w.getID());
         }
         return id;
+    }
+    
+    void addWidget(BusinessWidget widget){
+        widgets.add(widget);
     }
 }   

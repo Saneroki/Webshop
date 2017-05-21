@@ -5,7 +5,7 @@
  */
 package guiMain;
 
-import business.Controller;
+import mediator.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  * @author Marcg
  */
 public class PageSelectorController implements Initializable {
-    Controller control;
+    LogicMediator control;
     int pageChoice;
     /**
      * Initializes the controller class.
@@ -42,7 +42,7 @@ public class PageSelectorController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        control = Controller.getController();
+        control = LogicMediator.getMediator();
         updateBox(pageSelect, control.getPageList());
     }    
     

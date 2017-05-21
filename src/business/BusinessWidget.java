@@ -14,16 +14,12 @@ class BusinessWidget {
     int id;
     int x;
     int y;
-    int width;
-    int height;
     int DBid;
     
-    BusinessWidget(int x, int y, int height, int width, int id, int dbid){
+    BusinessWidget(int x, int y, int id, int dbid){
         this.x = x;
         this.y = y;
         this.id = id;
-        this.height = height;
-        this.width = width;
         this.DBid = dbid;
                
     }
@@ -42,14 +38,6 @@ class BusinessWidget {
     
     int getY(){
         return y;
-    }
-    
-    int getHeight(){
-        return height;
-    }
-    
-    int getWidth(){
-        return width;
     }
     
     int getID(){

@@ -32,7 +32,6 @@ public class ConnectionToDB {
 
             System.out.println("Something is wrong with your jdbc path!");
             e.printStackTrace();
-            return;
 
         }
 
@@ -60,6 +59,7 @@ public class ConnectionToDB {
     public void sendDBStatement(String statement){
         PreparedStatement prepStat = null;
         try {
+            System.out.println(statement);
             prepStat = con.prepareStatement(statement);
             result = prepStat.executeQuery();
             

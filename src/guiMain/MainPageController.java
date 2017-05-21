@@ -6,12 +6,9 @@
 package guiMain;
 
 import guiWidgets.WidgetSelector;
-import business.Controller;
-import java.awt.geom.Area;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import mediator.LogicMediator;
 
 /**
  * FXML Controller class
@@ -31,7 +29,7 @@ import javafx.stage.Stage;
  */
 public class MainPageController implements Initializable {
     
-    Controller controller;
+    LogicMediator controller;
     WidgetSelector ws;
     
     @FXML
@@ -42,7 +40,7 @@ public class MainPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ws = WidgetSelector.getWidgetSelector();
-        controller = Controller.getController();
+        controller = LogicMediator.getMediator();
     }
     
     @FXML
@@ -78,7 +76,6 @@ public class MainPageController implements Initializable {
         parent.getChildren().add(node);
         node.setLayoutX(controller.getWidgetX(id));
         node.setLayoutY(controller.getWidgetY(id));
-        node.resize(controller.getWigdetHeight(id), controller.getWidgetWidth(id));
     }
     
     

@@ -7,7 +7,7 @@ package guiWidgets;
  */
 
 
-import business.Controller;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import mediator.LogicMediator;
 
 /**
  *
@@ -24,13 +25,12 @@ import javafx.scene.Node;
 public class WidgetSelector {
 
     private ArrayList<Widget> widgets;
-    private File directory;
-    private Controller controller;
+    private LogicMediator controller;
     private static WidgetSelector ws;
 
     public WidgetSelector() {
         this.widgets = new ArrayList();
-        controller = Controller.getController();
+        controller = LogicMediator.getMediator();
         try {
             this.updateWidgets();
         } catch (IOException ex) {
@@ -47,7 +47,6 @@ public class WidgetSelector {
     }
     
     private void updateWidgets() throws IOException {
-        directory = new File(System.getProperty("user.dir") + "/src/guiWidgets");
         loadAll();
     }
 

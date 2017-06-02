@@ -122,5 +122,25 @@ public class WebPageLogic implements Colleague{
         return allPages;
     }
 
+    @Override
+    public void setURL(String url) {
+        dB.setURL(url);
+    }
+
+    @Override
+    public void setPW(String pw) {
+        dB.setPW(pw);
+    }
+
+    @Override
+    public void setUser(String user) {
+        dB.setUser(user);
+    }
+
+    @Override
+    public String connectToDB() {
+        return dB.connectToDB();
+    }
+
     
 }

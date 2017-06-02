@@ -16,5 +16,9 @@ public interface Colleague {
     public abstract HashMap<Integer, String> getStaticWidget();
     public abstract HashMap<Integer, String> getAllPages();
     public abstract void createWidget(int id, int DBid, int x, int y); 
+    public abstract void setURL(String url);
+    public abstract void setPW(String pw);
+    public abstract void setUser(String user);
+    public abstract String connectToDB();
     
 }

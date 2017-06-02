@@ -35,8 +35,9 @@ public class DBMediator implements Mediator{
         return dbMediator;
     }
     
-    public void connectToDB() {
-        dblogic.connectToDB();
+    @Override
+    public String connectToDB() {
+        return dblogic.connectToDB();
     }
 
     

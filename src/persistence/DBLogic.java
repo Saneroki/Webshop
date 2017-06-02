@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -31,10 +31,12 @@ public class DBLogic implements Colleague{
         this.mediator = mediator;
     }
     
-    public void connectToDB() {
+    @Override
+    public String connectToDB() {
         con = new ConnectionToDB(user, pw, url);
         status = con.connect();
         System.out.println(status);
+        return status;
     }
 
     
@@ -48,15 +50,17 @@ public class DBLogic implements Colleague{
         return status;
     }
     
-    
+    @Override
     public void setUser(String user){
         this.user = user;
     }
     
+    @Override
     public void setPW(String pw){
         this.pw = pw;
     }
     
+    @Override
     public void setURL(String url){
         this.url = url;
     }

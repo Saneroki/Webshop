@@ -21,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +41,16 @@ public class PageSelectorController implements Initializable {
     private ChoiceBox<String> pageSelect;
     @FXML
     private Button selectPage;
+    @FXML
+    private Button dbLogin;
+    @FXML
+    private TextArea pw;
+    @FXML
+    private TextArea dbuser;
+    @FXML
+    private TextArea url;
+    @FXML
+    private Text status;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,11 +67,16 @@ public class PageSelectorController implements Initializable {
     private void buttonListener(ActionEvent event) {
         if (event.getSource() == selectPage) {
             switchScene(event);
+        } else if (event.getSource() == dbLogin){
+            updateChoicebox();
         }
     }
     
     private void switchScene(ActionEvent event) {
         try {
+            control.setPW(pw.getText());
+            control.setUser(dbuser.getText());
+            control.setURL(url.getText());
             FXMLLoader  loader = new FXMLLoader(getClass().getResource("MainPage.fxml"));
             Parent pageParent = loader.load();
             Scene newPageScene = new Scene(pageParent);
@@ -71,18 +88,20 @@ public class PageSelectorController implements Initializable {
             controller.loadPage(control.getPageID(pageSelect.getValue()));
             stage.show();
         } catch (IOException ex) {
-            System.out.println("cannot find page");
-            System.out.println(ex);
+            System.out.println("Error 404: Page not found!");
         }
     }
     
-    private void alertConnectionError(){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Connection to the Database Failed!");
-        alert.setContentText("Database is not available at the moment");
-        alert.showAndWait();
+    private void updateChoicebox(){
+        pageSelect.getItems().clear();
+        control.setPW(pw.getText());
+        control.setUser(dbuser.getText());
+        control.setURL(url.getText());
+        status.setText(control.connectToDB());
+        updateBox(pageSelect, control.getPageList());
     }
+    
+    
     
     
     

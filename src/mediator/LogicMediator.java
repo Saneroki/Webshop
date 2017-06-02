@@ -42,17 +42,17 @@ public class LogicMediator implements Mediator{
 
     @Override
     public void setPW(String pw) {
-        
+        logic.setPW(pw);
     }
 
     @Override
     public void setUser(String user) {
-        
+        logic.setUser(user);
     }
 
     @Override
     public void setURL(String url) {
-        
+        logic.setURL(url);
     }
     
     
@@ -93,6 +93,11 @@ public class LogicMediator implements Mediator{
     @Override
     public HashMap<Integer, String> createStaticWidgets() {
         return logic.getStaticWidget();
+    }
+
+    @Override
+    public String connectToDB() {
+        return logic.connectToDB();
     }
 
     

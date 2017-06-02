@@ -18,6 +18,7 @@ public  interface Mediator {
     public abstract void setUser(String user);
     public abstract void setURL(String url); 
     public abstract HashMap<Integer, String> createStaticWidgets();
+    public abstract String connectToDB();
     
 }
 
